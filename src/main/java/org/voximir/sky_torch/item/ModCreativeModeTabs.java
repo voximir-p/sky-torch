@@ -14,10 +14,10 @@ import static org.voximir.sky_torch.SkyTorch.MOD_ID;
 
 public class ModCreativeModeTabs {
 
-    public static final ResourceKey<CreativeModeTab> SKY_TORCH = register("sky_torch");
+    public static final ResourceKey<CreativeModeTab> SKY_TORCH = createKey("sky_torch");
 
-    private static ResourceKey<CreativeModeTab> register(String id) {
-        return ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MOD_ID, id));
+    private static ResourceKey<CreativeModeTab> createKey(String string) {
+        return ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(MOD_ID, string));
     }
 
     public static void init() {
@@ -25,11 +25,11 @@ public class ModCreativeModeTabs {
                 BuiltInRegistries.CREATIVE_MODE_TAB,
                 SKY_TORCH,
                 FabricItemGroup.builder()
-                        .title(Translatable.component(Translatable.Prefixes.CREATIVE_MODE_TAB, SKY_TORCH.identifier()))
+                        .title(Translatable.component("itemGroup", SKY_TORCH.identifier()))
                         .icon(() -> new ItemStack(ModItems.SUPERCHARGED_SHARD))
-                        .displayItems((displayContext, entries) -> {
-                            entries.accept(new ItemStack(ModItems.BURNT_SHARD));
-                            entries.accept(new ItemStack(ModItems.SUPERCHARGED_SHARD));
+                        .displayItems((itemDisplayParameters, output) -> {
+                            output.accept(new ItemStack(ModItems.BURNT_SHARD));
+                            output.accept(new ItemStack(ModItems.SUPERCHARGED_SHARD));
                         })
                         .build()
         );

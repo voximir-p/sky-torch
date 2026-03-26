@@ -17,15 +17,8 @@ public class LightningEvents {
             ItemStack held = player.getMainHandItem();
             if (!held.is(ModItems.BURNT_SHARD)) return;
 
-            held.shrink(1);
-            player.addItem(new ItemStack(ModItems.SUPERCHARGED_SHARD));
-            player.displayClientMessage(
-                    Translatable.component(
-                            Translatable.Prefixes.OVERLAY,
-                            "shard_supercharge"
-                    ),
-                    true
-            );
+            player.setItemInHand(player.getUsedItemHand(), new ItemStack(ModItems.SUPERCHARGED_SHARD));
+            player.displayClientMessage(Translatable.component("overlay", "shard_supercharge"), true);
         });
     }
 }

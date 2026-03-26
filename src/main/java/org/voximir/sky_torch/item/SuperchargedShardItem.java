@@ -13,17 +13,17 @@ import java.util.function.Consumer;
 
 public class SuperchargedShardItem extends Item implements TooltipProvider {
 
-    public SuperchargedShardItem(Properties settings) {
-        super(settings);
+    public SuperchargedShardItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public boolean isFoil(@NonNull ItemStack stack) {
+    public boolean isFoil(@NonNull ItemStack itemStack) {
         return true;
     }
 
     @Override
     public void addToTooltip(@NonNull TooltipContext tooltipContext, Consumer<Component> consumer, @NonNull TooltipFlag tooltipFlag, @NonNull DataComponentGetter dataComponentGetter) {
-        consumer.accept(Translatable.component(Translatable.Prefixes.TOOLTIP, "supercharged_shard"));
+        consumer.accept(Translatable.component("tooltip", "supercharged_shard"));
     }
 }

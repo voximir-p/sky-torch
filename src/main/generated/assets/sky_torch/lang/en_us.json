@@ -2,6 +2,6 @@
   "item.sky_torch.burnt_shard": "Burnt Shard",
   "item.sky_torch.supercharged_shard": "Supercharged Shard",
   "itemGroup.sky_torch.sky_torch": "Sky Torch",
-  "overlay.sky_torch.shard_supercharge": "§eYou can feel some kind of §6§lenergy§r§e in the shard...",
+  "overlay.sky_torch.shard_supercharge": "You can feel some kind of §lenergy§r in the shard...",
   "tooltip.sky_torch.supercharged_shard": "§7A shard containing an immense amount of energy"
 }

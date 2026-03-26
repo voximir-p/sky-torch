@@ -21,7 +21,7 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.sky_torch.burnt_shard", "Burnt Shard");
         translationBuilder.add("item.sky_torch.supercharged_shard", "Supercharged Shard");
 
-        translationBuilder.add("overlay.sky_torch.shard_supercharge", "§eYou can feel some kind of §6§lenergy§r§e in the shard...");
+        translationBuilder.add("overlay.sky_torch.shard_supercharge", "You can feel some kind of §lenergy§r in the shard...");
 
         translationBuilder.add("tooltip.sky_torch.supercharged_shard", "§7A shard containing an immense amount of energy");
     }

@@ -23,6 +23,6 @@ public class ModEnglishLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("overlay.sky_torch.shard_supercharge", "You can feel some kind of §lenergy§r in the shard...");
 
-        translationBuilder.add("tooltip.sky_torch.supercharged_shard", "§7A shard containing an immense amount of energy");
+        translationBuilder.add("tooltip.sky_torch.supercharged_shard", "§7It seems to be holding an immense amount of energy...");
     }
 }

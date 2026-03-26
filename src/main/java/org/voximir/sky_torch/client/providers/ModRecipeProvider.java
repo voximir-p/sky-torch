@@ -7,7 +7,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import org.jspecify.annotations.NonNull;
 import org.voximir.sky_torch.item.ModItems;
@@ -26,9 +25,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registries, exporter) {
             @Override
             public void buildRecipes() {
-                HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
+                var itemRegistryLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                oreSmelting(List.of(Items.AMETHYST_SHARD), RecipeCategory.MISC, ModItems.BURNT_SHARD, 0.25f, 200, "burnt_shard_smelting");
+                oreSmelting(
+                        List.of(Items.AMETHYST_SHARD),
+                        RecipeCategory.MISC,
+                        ModItems.BURNT_SHARD,
+                        0.25f,
+                        200,
+                        "burnt_shard_smelting"
+                );
             }
         };
     }

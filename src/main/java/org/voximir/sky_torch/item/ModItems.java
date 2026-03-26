@@ -30,10 +30,10 @@ public class ModItems {
     );
 
     private static <T extends Item> T registerItem(String name, Function<Item.Properties, T> function, Item.Properties properties) {
-        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name));
-        T item = function.apply(properties.setId(key));
+        var itemResourceKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name));
+        var item = function.apply(properties.setId(itemResourceKey));
 
-        return Registry.register(BuiltInRegistries.ITEM, key, item);
+        return Registry.register(BuiltInRegistries.ITEM, itemResourceKey, item);
     }
 
     public static void init() {

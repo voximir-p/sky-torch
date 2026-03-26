@@ -1,7 +1,6 @@
 package org.voximir.sky_torch.event;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,13 +16,13 @@ public class LightningEvents {
             if (!(entity instanceof ServerPlayer player)) return;
             if (!source.is(DamageTypes.LIGHTNING_BOLT)) return;
 
-            ItemStack held = player.getMainHandItem();
-            if (!held.is(ModItems.BURNT_SHARD)) return;
+            var heldItem = player.getMainHandItem();
+            if (!heldItem.is(ModItems.BURNT_SHARD)) return;
 
             player.setItemInHand(player.getUsedItemHand(), new ItemStack(ModItems.SUPERCHARGED_SHARD));
             player.displayClientMessage(Translatable.component("overlay", "shard_supercharge"), true);
 
-            ServerLevel serverLevel = player.level();
+            var serverLevel = player.level();
 
             serverLevel.playSound(null, player, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 0.0f);
             serverLevel.playSound(null, player, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 1.0f);

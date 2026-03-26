@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "sky_torch",
+  "version": "${version}",
+  "name": "Sky Torch",
+  "description": "A mod that adds a deadly orbital laser.",
+  "authors": [
+    "voximir"
+  ],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/sky_torch/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.voximir.sky_torch.client.SkyTorchDataGenerator"
+    ],
+    "client": [
+      "org.voximir.sky_torch.client.SkyTorchClient"
+    ],
+    "main": [
+      "org.voximir.sky_torch.SkyTorch"
+    ]
+  },
+  "mixins": [
+    "sky_torch.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

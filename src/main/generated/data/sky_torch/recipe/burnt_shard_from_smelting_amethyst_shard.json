@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "burnt_shard_smelting",
+  "ingredient": "minecraft:amethyst_shard",
+  "result": {
+    "id": "sky_torch:burnt_shard"
+  }
+}

@@ -60,11 +60,11 @@ public class SuperchargedShardItem extends Item {
         if (level.isClientSide() || interactionHand == InteractionHand.OFF_HAND || !itemStack.is(this))
             return InteractionResult.PASS;
 
-        Vec3 start = player.getEyePosition();
-        Vec3 clipDir = player.getViewVector(1.0f);
-        Vec3 end = start.add(clipDir.scale(MAX_RANGE));
+        var startPos = player.getEyePosition();
+        var clipDir = player.getViewVector(1.0f);
+        var endPos = startPos.add(clipDir.scale(MAX_RANGE));
         BlockHitResult result = level.clip(new ClipContext(
-                start, end,
+                startPos, endPos,
                 ClipContext.Block.COLLIDER,
                 ClipContext.Fluid.NONE,
                 player
@@ -90,20 +90,20 @@ public class SuperchargedShardItem extends Item {
             player.setItemInHand(interactionHand, ItemStack.EMPTY);
 
         // Laser
-        Vec3 hit = blockPos.getCenter();
-        Vec3 origin = hit.add(
+        var hitPos = blockPos.getCenter();
+        var origin = hitPos.add(
                 clipDir.add(new Vec3(0.0, 1.0, 0.0))
                         .yRot((float) (Math.PI / 6.0))
                         .scale(600.0)
         );
-        Vec3 velocityDir = new Vec3(clipDir.x, 0.0, clipDir.z).normalize();
-        Vec3 render = player.position();
+        var velocityDir = new Vec3(clipDir.x, 0.0, clipDir.z).normalize();
+        var render = player.position();
 
         var box = new AABB(blockPos).inflate(SOUND_RADIUS + 1.0d);
-        List<Player> affectedPlayers = level.getEntitiesOfClass(
+        var affectedPlayers = level.getEntitiesOfClass(
                 Player.class,
                 box,
-                _player -> _player.distanceToSqr(hit) <= (SOUND_RADIUS * SOUND_RADIUS)
+                _player -> _player.distanceToSqr(hitPos) <= (SOUND_RADIUS * SOUND_RADIUS)
         );
 
         chargeAndSpawn(
@@ -111,7 +111,7 @@ public class SuperchargedShardItem extends Item {
                         SOUND_RADIUS,
                         affectedPlayers,
                         level,
-                        hit,
+                        hitPos,
                         blockPos,
                         origin,
                         velocityDir,

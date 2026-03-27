@@ -11,7 +11,7 @@ public record LaserPlacement(
         double soundRadius,
         List<Player> affectedPlayers,
         Level level,
-        Vec3 hit,
+        Vec3 hitPos,
         BlockPos hitBlockPos,
         Vec3 origin,
         Vec3 velocityDir,

@@ -12,7 +12,7 @@ public class TickScheduler {
     }
 
     public static void tick() {
-        Iterator<ScheduledTask> iterator = TASKS.iterator();
+        var iterator = TASKS.iterator();
 
         while (iterator.hasNext()) {
             ScheduledTask task = iterator.next();

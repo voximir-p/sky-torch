@@ -20,7 +20,7 @@ public class SoundUtil {
             var volume = MathUtil.lerp(
                     volMax,
                     volMin,
-                    (float) (player.position().distanceTo(placement.hit()) / placement.soundRadius())
+                    (float) (player.position().distanceTo(placement.hitPos()) / placement.soundRadius())
             );
             playLocalSound((ServerPlayer) player, soundEventId, soundSource, volume, pitch);
             player.displayClientMessage(Component.literal("Volume: ").append(String.valueOf(volume)), false);

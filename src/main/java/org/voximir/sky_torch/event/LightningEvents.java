@@ -7,26 +7,25 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.item.ItemStack;
 import org.voximir.sky_torch.item.ModItems;
-import org.voximir.sky_torch.utils.Translatable;
+import org.voximir.sky_torch.util.Translatable;
 
 public class LightningEvents {
-
     public static void init() {
         ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
-            if (!(entity instanceof ServerPlayer player)) return;
+            if (!(entity instanceof ServerPlayer serverPlayer)) return;
             if (!source.is(DamageTypes.LIGHTNING_BOLT)) return;
 
-            var heldItem = player.getMainHandItem();
+            var heldItem = serverPlayer.getMainHandItem();
             if (!heldItem.is(ModItems.BURNT_SHARD)) return;
 
-            player.setItemInHand(player.getUsedItemHand(), new ItemStack(ModItems.SUPERCHARGED_SHARD));
-            player.displayClientMessage(Translatable.component("overlay", "shard_supercharge"), true);
+            serverPlayer.setItemInHand(serverPlayer.getUsedItemHand(), new ItemStack(ModItems.SUPERCHARGED_SHARD));
+            serverPlayer.displayClientMessage(Translatable.component("overlay", "shard_supercharge"), true);
 
-            var serverLevel = player.level();
+            var serverLevel = serverPlayer.level();
 
-            serverLevel.playSound(null, player, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 0.0f);
-            serverLevel.playSound(null, player, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 1.0f);
-            serverLevel.playSound(null, player, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0f, 0.5f);
+            serverLevel.playSound(null, serverPlayer, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 0.0f);
+            serverLevel.playSound(null, serverPlayer, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 1.0f, 1.0f);
+            serverLevel.playSound(null, serverPlayer, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0f, 0.5f);
         });
     }
 }

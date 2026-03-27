@@ -1,7 +1,9 @@
 {
+  "debug.sky_torch.fire": "X: %1$s Y: %2$s Z: %3$s",
   "item.sky_torch.burnt_shard": "Burnt Shard",
   "item.sky_torch.supercharged_shard": "Supercharged Shard",
   "itemGroup.sky_torch.sky_torch": "Sky Torch",
+  "overlay.sky_torch.exceed_range": "The target is too far away!",
   "overlay.sky_torch.shard_supercharge": "You can feel some kind of §lenergy§r in the shard...",
   "tooltip.sky_torch.supercharged_shard": "§7It seems to be holding an immense amount of energy..."
 }

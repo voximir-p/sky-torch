@@ -13,7 +13,6 @@ import java.util.function.Function;
 import static org.voximir.sky_torch.SkyTorch.MOD_ID;
 
 public class ModItems {
-
     public static final Item BURNT_SHARD = registerItem(
             "burnt_shard",
             Item::new,

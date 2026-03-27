@@ -7,7 +7,6 @@ import org.voximir.sky_torch.client.providers.ModModelProvider;
 import org.voximir.sky_torch.client.providers.ModRecipeProvider;
 
 public class SkyTorchDataGenerator implements DataGeneratorEntrypoint {
-
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();

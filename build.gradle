@@ -103,5 +103,5 @@ publishing {
 }
 
 runClient {
-    jvmArgs "-Xmx4G", "-Xms4G"
+    jvmArgs "-Xmx1G", "-Xms1G"
 }

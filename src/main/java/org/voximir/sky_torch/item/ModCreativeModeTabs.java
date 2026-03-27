@@ -8,12 +8,11 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import org.voximir.sky_torch.utils.Translatable;
+import org.voximir.sky_torch.util.Translatable;
 
 import static org.voximir.sky_torch.SkyTorch.MOD_ID;
 
 public class ModCreativeModeTabs {
-
     public static final ResourceKey<CreativeModeTab> SKY_TORCH = createKey("sky_torch");
 
     private static ResourceKey<CreativeModeTab> createKey(String string) {

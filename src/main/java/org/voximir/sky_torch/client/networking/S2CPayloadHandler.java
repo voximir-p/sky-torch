@@ -6,7 +6,7 @@ import org.voximir.sky_torch.networking.PlayLocalSoundS2CPayload;
 
 import java.util.Objects;
 
-public class ModS2CPayloadHandler {
+public class S2CPayloadHandler {
     public static void init() {
         ClientPlayNetworking.registerGlobalReceiver(PlayLocalSoundS2CPayload.ID, (payload, context) ->
             context.client().execute(() -> {

@@ -1,6 +1,5 @@
 package org.voximir.sky_torch.util;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class TickScheduler {
 
     private static class ScheduledTask {
         int ticks;
-        Runnable action;
+        final Runnable action;
 
         ScheduledTask(int ticks, Runnable action) {
             this.ticks = ticks;

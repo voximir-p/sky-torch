@@ -1,6 +1,5 @@
 package org.voximir.sky_torch.laser;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -12,7 +11,6 @@ public record LaserPlacement(
         List<Player> affectedPlayers,
         Level level,
         Vec3 hitPos,
-        BlockPos hitBlockPos,
         Vec3 origin,
         Vec3 velocityDir,
         Vec3 render

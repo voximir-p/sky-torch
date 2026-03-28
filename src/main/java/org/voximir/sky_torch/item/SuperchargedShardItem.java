@@ -112,7 +112,6 @@ public class SuperchargedShardItem extends Item {
                         affectedPlayers,
                         level,
                         hitPos,
-                        blockPos,
                         origin,
                         velocityDir,
                         render

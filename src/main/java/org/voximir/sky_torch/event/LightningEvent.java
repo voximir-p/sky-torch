@@ -7,10 +7,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.item.ItemStack;
 import org.voximir.sky_torch.item.ModItems;
-import org.voximir.sky_torch.util.Translatable;
+import org.voximir.sky_torch.utility.Translatable;
 
-public class LightningEvents {
-    public static void init() {
+public class LightningEvent {
+    public static void register() {
         ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
             if (!(entity instanceof ServerPlayer serverPlayer)) return;
             if (!source.is(DamageTypes.LIGHTNING_BOLT)) return;

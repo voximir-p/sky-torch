@@ -1,4 +1,4 @@
-package org.voximir.sky_torch.util;
+package org.voximir.sky_torch.utility;
 
 public class SeriesScheduler {
     private int delay = 0;

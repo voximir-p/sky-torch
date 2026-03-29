@@ -11,6 +11,10 @@ base {
 }
 
 
+loom {
+    accessWidenerPath = file("src/main/resources/sky-torch.accesswidener")
+}
+
 fabricApi {
     configureDataGeneration {
         client = true
@@ -103,5 +107,5 @@ publishing {
 }
 
 runClient {
-    jvmArgs "-Xmx1G", "-Xms1G"
+    jvmArgs "-Xmx2G", "-Xms2G"
 }

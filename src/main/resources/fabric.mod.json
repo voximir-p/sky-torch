@@ -25,6 +25,7 @@
   "mixins": [
     "sky_torch.mixins.json"
   ],
+  "accessWidener": "sky-torch.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",

@@ -1,25 +1,26 @@
-package org.voximir.sky_torch.util;
+package org.voximir.sky_torch.utility;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TickScheduler {
-    private static final List<ScheduledTask> TASKS = new LinkedList<>();
+    private static final List<ScheduledTask> TASKS = new ArrayList<>();
 
     public static void schedule(int delay, Runnable action) {
         TASKS.add(new ScheduledTask(delay, action));
     }
 
     public static void tick() {
-        var iterator = TASKS.iterator();
-
-        while (iterator.hasNext()) {
-            ScheduledTask task = iterator.next();
+        // Snapshot the list so that actions calling schedule() during execution
+        // append to TASKS without causing ConcurrentModificationException.
+        List<ScheduledTask> snapshot = new ArrayList<>(TASKS);
+        TASKS.clear();
+        for (ScheduledTask task : snapshot) {
             task.ticks--;
-
-            if (task.ticks <= 0) {
+            if (task.ticks > 0) {
+                TASKS.add(task);
+            } else {
                 task.action.run();
-                iterator.remove();
             }
         }
     }

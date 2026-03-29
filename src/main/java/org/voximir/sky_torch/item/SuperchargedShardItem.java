@@ -20,9 +20,9 @@ import org.jspecify.annotations.NonNull;
 import org.voximir.sky_torch.laser.Laser;
 import org.voximir.sky_torch.laser.LaserOptions;
 import org.voximir.sky_torch.laser.LaserPlacement;
-import org.voximir.sky_torch.util.SeriesScheduler;
-import org.voximir.sky_torch.util.Translatable;
-import org.voximir.sky_torch.util.SoundUtil;
+import org.voximir.sky_torch.utility.SeriesScheduler;
+import org.voximir.sky_torch.utility.Translatable;
+import org.voximir.sky_torch.utility.SoundUtil;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -30,6 +30,7 @@ import java.util.function.Consumer;
 public class SuperchargedShardItem extends Item {
     private static final double MAX_RANGE = 64.0d;
     private static final double SOUND_RADIUS = 128.0d;
+    private static final double ORIGIN_RADIUS = 300.0d;
 
     public SuperchargedShardItem(Properties properties) {
         super(properties);
@@ -77,25 +78,23 @@ public class SuperchargedShardItem extends Item {
             return InteractionResult.FAIL;
         }
 
-        player.displayClientMessage(Component.translatable(
-                        "debug.sky_torch.fire",
-                        blockPos.getX(),
-                        blockPos.getY(),
-                        blockPos.getZ()),
-                false
-        );
-
         if (!Objects.requireNonNull(player.gameMode()).isCreative())
             player.setItemInHand(interactionHand, ItemStack.EMPTY);
 
         // Laser
         var hitPos = blockPos.getCenter();
-        var origin = hitPos.add(
-                clipDir.add(new Vec3(0.0, 1.0, 0.0))
-                        .yRot((float) (Math.PI / 6.0))
-                        .scale(600.0)
+        // Origin: a fixed point on a circle of radius ORIGIN_RADIUS centered above the hit
+        // position at the max build height. The angle follows the attack direction (+ 30°).
+        var xzFlat = new Vec3(clipDir.x(), 0, clipDir.z());
+        var xzDir = xzFlat.lengthSqr() > 1e-8
+                ? xzFlat.yRot((float) (Math.PI / 6.0)).normalize()
+                : new Vec3(1, 0, 0); // fallback: player looking straight up/down
+        var origin = new Vec3(
+                hitPos.x() + xzDir.x() * ORIGIN_RADIUS,
+                level.getMaxY(),
+                hitPos.z() + xzDir.z() * ORIGIN_RADIUS
         );
-        var velocityDir = new Vec3(clipDir.x, 0.0, clipDir.z).normalize();
+        var velocityDir = new Vec3(clipDir.x(), 0.0, clipDir.z()).normalize();
         var render = player.position();
 
         var box = new AABB(blockPos).inflate(SOUND_RADIUS + 1.0d);

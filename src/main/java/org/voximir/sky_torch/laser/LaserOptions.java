@@ -15,11 +15,11 @@ public class LaserOptions {
     public double boreRadius = 3.0;
     public double boreBurnRadius = 5.0;
     public int boreDistance = 50;
-//    public BurnOptions burn = new BurnOptions();
-//    public ShockWaveOptions shockwave = new ShockWaveOptions();
-//    public BurnWaveOptions burnWave = new BurnWaveOptions();
-//    public FlashBurnOptions flashBurn = new FlashBurnOptions();
-//    public BlindingEffectOptions blinding = new BlindingEffectOptions();
+    public Burner.BurnOptions burn = new Burner.BurnOptions();
+    public ShockWave.ShockWaveOptions shockwave = new ShockWave.ShockWaveOptions();
+    public BurnWave.BurnWaveOptions burnWave = new BurnWave.BurnWaveOptions();
+    public FlashBurn.FlashBurnOptions flashBurn = new FlashBurn.FlashBurnOptions();
+    public BlindingEffect.BlindingEffectOptions blinding = new BlindingEffect.BlindingEffectOptions();
     public double explodePlacementOffset = 2.0;
     public double flashBurnPlacementOffset = 5.0;
     public double digDepth = 1.0;

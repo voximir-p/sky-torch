@@ -2,13 +2,12 @@ package org.voximir.sky_torch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.voximir.sky_torch.event.LightningEvents;
-import org.voximir.sky_torch.event.TickSchedulerEvents;
+import org.voximir.sky_torch.event.ModEvents;
 import org.voximir.sky_torch.item.ModCreativeModeTabs;
 import org.voximir.sky_torch.item.ModItems;
+import org.voximir.sky_torch.networking.ModNetworking;
 
 import net.fabricmc.api.ModInitializer;
-import org.voximir.sky_torch.networking.ModNetworking;
 
 public class SkyTorch implements ModInitializer {
     public static final String MOD_ID = "sky_torch";
@@ -18,10 +17,7 @@ public class SkyTorch implements ModInitializer {
     public void onInitialize() {
         ModItems.init();
         ModCreativeModeTabs.init();
-
-        LightningEvents.init();
-        TickSchedulerEvents.init();
-
+        ModEvents.init();
         ModNetworking.init();
 
         LOGGER.info("Sky Torch initialized!");

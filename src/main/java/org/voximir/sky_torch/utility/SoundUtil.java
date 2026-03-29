@@ -1,4 +1,4 @@
-package org.voximir.sky_torch.util;
+package org.voximir.sky_torch.utility;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,6 +13,9 @@ import org.voximir.sky_torch.laser.LaserPlacement;
 import org.voximir.sky_torch.networking.PlayLocalSoundS2CPayload;
 
 public class SoundUtil {
+    private SoundUtil() {
+    }
+
     /// Plays a distance-scaled sound to players locally
     public static void playLocalScaledSoundAtPlayer(LaserPlacement placement, SoundEvent soundEvent, SoundSource soundSource, float volMin, float volMax, float pitch) {
         var soundEventId = BuiltInRegistries.SOUND_EVENT.getKey(soundEvent);
@@ -23,7 +26,6 @@ public class SoundUtil {
                     (float) (player.position().distanceTo(placement.hitPos()) / placement.soundRadius())
             );
             playLocalSound((ServerPlayer) player, soundEventId, soundSource, volume, pitch);
-            player.displayClientMessage(Component.literal("Volume: ").append(String.valueOf(volume)), false);
         }
     }
 

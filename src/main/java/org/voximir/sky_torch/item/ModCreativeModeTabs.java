@@ -8,7 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import org.voximir.sky_torch.util.Translatable;
+import org.voximir.sky_torch.utility.Translatable;
 
 import static org.voximir.sky_torch.SkyTorch.MOD_ID;
 

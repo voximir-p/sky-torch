@@ -1,4 +1,4 @@
-package org.voximir.sky_torch.util;
+package org.voximir.sky_torch.utility;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -6,6 +6,9 @@ import net.minecraft.resources.Identifier;
 import static org.voximir.sky_torch.SkyTorch.MOD_ID;
 
 public class Translatable {
+    private Translatable() {
+    }
+
     public static String string(String prefix, String id) {
         return String.format("%s.%s.%s", prefix, MOD_ID, id);
     }
